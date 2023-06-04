@@ -1,0 +1,70 @@
+[
+  {
+    "type": "feature-flag",
+    "key": "enable-login",
+    "name": "Enable Logging In",
+    "serverOnly": false,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "soft-released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "soft-released" },
+      { "key": "prod", "name": "Production", "state": "disabled" }
+    ],
+    "createdOn": "2023-06-03T10:12:00"
+  },
+  {
+    "type": "feature-flag",
+    "key": "new-design",
+    "name": "Use new design",
+    "serverOnly": false,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "released" },
+      { "key": "prod", "name": "Production", "state": "soft-released" }
+    ],
+    "createdOn": "2023-06-02T10:12:00"
+  },
+  {
+    "type": "remote-config",
+    "key": "admins",
+    "name": "Admins",
+    "serverOnly": false,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "released" },
+      { "key": "prod", "name": "Production", "state": "soft-released" }
+    ],
+    "createdOn": "2023-06-01T10:12:00"
+  },
+  {
+    "type": "feature-flag",
+    "key": "github-sign-in",
+    "name": "Allow GitHub sign-in",
+    "serverOnly": true,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "disabled" },
+      { "key": "prod", "name": "Production", "state": "disabled" }
+    ],
+    "createdOn": "2023-06-04T08:12:00"
+  }
+]

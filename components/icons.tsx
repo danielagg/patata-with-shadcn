@@ -1,5 +1,4 @@
 import {
-  LucideProps,
   Moon,
   SunMedium,
   Twitter,

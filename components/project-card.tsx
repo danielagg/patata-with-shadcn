@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import { Project } from "@/projects/types";
+import Link from "next/link";
 
 export const ProjectCard = ({ project }: { project: Project }) => {
   const Environment = ({
@@ -52,14 +53,16 @@ export const ProjectCard = ({ project }: { project: Project }) => {
           <p>Environments</p>
           <ul>
             {project.environments.map((e) => {
-              return <Environment name={e.name} color={e.color} />;
+              return <Environment key={e.name} name={e.name} color={e.color} />;
             })}
           </ul>
         </CardContent>
       </div>
 
       <CardFooter>
-        <Button className="w-full">Go to Project</Button>
+        <Button className="w-full">
+          <Link href={`/projects/${project.id}`}>Go to Project</Link>
+        </Button>
       </CardFooter>
     </Card>
   );

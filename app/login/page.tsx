@@ -36,34 +36,8 @@ export default function Login() {
         </h2>
       </div>
       <div className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center">
-        <h1 className="text-4xl">Welcome back!</h1>
+        <h1 className="text-4xl font-bold">Welcome back!</h1>
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
-
-        <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 mt-8">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => router.push("/projects")}
-          >
-            <Icons.google />
-            <p className="ml-2">Login with Google</p>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => router.push("/projects")}
-          >
-            <Icons.gitHub />
-            <p className="ml-2">Login with GitHub</p>
-          </Button>
-        </div>
-
-        <div className="relative w-[40%] flex items-center justify-center mt-12 lg:mt-16">
-          <hr className="z-0 absolute inset-0 w-full border border-border" />
-          <p className="z-10 -mt-6 text-sm text-muted-foreground bg-background p-4">
-            or
-          </p>
-        </div>
 
         <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10">
           <p className="text-sm">Email</p>
@@ -111,6 +85,33 @@ export default function Login() {
         <div className="block lg:hidden mt-6">
           <ForgotPassword />
         </div>
+
+        <div className="relative w-[40%] flex items-center justify-center mt-12 lg:mt-16">
+          <hr className="z-0 absolute inset-0 w-full border border-border" />
+          <p className="z-10 -mt-6 text-sm text-muted-foreground bg-background p-4">
+            or
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 mt-8">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => router.push("/projects")}
+          >
+            <Icons.google />
+            <p className="ml-2">Login with Google</p>
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => router.push("/projects")}
+          >
+            <Icons.gitHub />
+            <p className="ml-2">Login with GitHub</p>
+          </Button>
+        </div>
+
         <p className="mt-8 text-sm text-muted-foreground">
           Don't have an account, yet?{" "}
           <span className="font-bold cursor-pointer text-primary hover:underline">

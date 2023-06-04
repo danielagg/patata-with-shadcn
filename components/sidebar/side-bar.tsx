@@ -24,8 +24,8 @@ export const getButtonVariant = (
   | null
   | undefined => {
   // exact match on home, else it's a fuzzy match
-  if (expectedPath == "/") {
-    return currentPath == "/" ? "default" : "ghost";
+  if (expectedPath == "/projects") {
+    return currentPath == "/projects" ? "default" : "ghost";
   }
 
   return currentPath.indexOf(expectedPath) > -1 ? "default" : "ghost";
