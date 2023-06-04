@@ -1,6 +1,4 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
@@ -9,25 +7,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function Billing() {
   return (
@@ -50,7 +49,30 @@ export default function Billing() {
           </CardContent>
           <CardFooter className="space-x-2">
             <Button>Switch Plan</Button>
-            <Button variant="destructive">Cancel Subscription</Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Cancel Subscription</Button>
+              </AlertDialogTrigger>
+
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    By cancelling your current subscription, you will be
+                    transitioning your projects to our Free tier. This will
+                    impact the available number of HTTP requests and seats.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>
+                    Keep my Subscription active
+                  </AlertDialogCancel>
+                  <AlertDialogAction>
+                    <Button variant="destructive">Unsubscribe</Button>
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </CardFooter>
         </Card>
       </div>
@@ -68,6 +90,7 @@ export default function Billing() {
               <TableHead>Status</TableHead>
               <TableHead>Method</TableHead>
               <TableHead>Amount</TableHead>
+              <TableHead></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -78,6 +101,7 @@ export default function Billing() {
               </TableCell>
               <TableCell>Credit Card (ending in 1234)</TableCell>
               <TableCell>€99</TableCell>
+              <TableCell />
             </TableRow>
             <TableRow>
               <TableCell>May, 2023</TableCell>
@@ -125,6 +149,7 @@ export default function Billing() {
               </TableCell>
               <TableCell>Credit Card (ending in 1234)</TableCell>
               <TableCell>€99</TableCell>
+              <TableCell />
             </TableRow>
             <TableRow>
               <TableCell>Feb, 2023</TableCell>
