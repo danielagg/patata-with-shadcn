@@ -50,7 +50,7 @@ export default function Login() {
 
           <p className="text-sm mt-6">Password</p>
           <Input
-            placeholder="Type your password address here"
+            placeholder="Type your address here"
             type="password"
             className="w-full mt-1"
           />

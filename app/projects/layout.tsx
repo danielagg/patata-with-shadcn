@@ -19,10 +19,10 @@ export default async function ProjectsLayout({
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <div className="relative flex min-h-screen">
-          <div className="w-1/5">
+          <div className="w-1/5 hidden lg:block">
             <Sidebar projects={data} />
           </div>
-          <div className="w-4/5 flex flex-col">
+          <div className="w-full lg:w-4/5 flex flex-col">
             <SiteHeader />
             <div className="flex-1">{children}</div>
           </div>
