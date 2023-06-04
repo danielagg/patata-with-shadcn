@@ -13,10 +13,10 @@ export default function Login() {
   const { theme } = useTheme();
 
   return (
-    <main className="min-h-screen flex justify-center items-center text-background">
-      <div className="w-[57%] text-foreground p-24">
+    <main className="min-h-screen flex justify-center items-center">
+      <div className="w-[57%] min-h-screen flex flex-col justify-center bg-foreground text-background p-24">
         <Icons.koopleDark />
-        <h1 className="text-5xl font-bold mt-24">
+        <h1 className="text-5xl font-bold mt-16">
           Feature Flags, release quality software faster
         </h1>
         <h2 className="text-lg mt-6">
@@ -25,7 +25,7 @@ export default function Login() {
           code.
         </h2>
       </div>
-      <div className="w-[43%] bg-foreground min-h-screen flex flex-col items-center justify-center">
+      <div className="w-[43%] min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-4xl">Welcome back!</h1>
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
@@ -42,7 +42,7 @@ export default function Login() {
 
         <div className="relative w-[40%] flex items-center justify-center mt-16">
           <hr className="z-0 absolute inset-0 w-full border border-border" />
-          <p className="z-10 -mt-6 text-sm text-muted-foreground bg-foreground p-4">
+          <p className="z-10 -mt-6 text-sm text-muted-foreground bg-background p-4">
             or
           </p>
         </div>
@@ -100,5 +100,8 @@ export default function Login() {
         </p>
       </div>
     </main>
+    // <main className="min-h-screen flex justify-center items-center text-background">
+
+    // </main>
   );
 }

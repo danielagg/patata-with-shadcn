@@ -9,7 +9,7 @@ export function Breadcrumb() {
   const pathname = usePathname();
 
   const getBreadcrumbs = () => {
-    console.log(pathname.split("/").filter((x) => x));
+    // console.log(pathname.split("/").filter((x) => x));
   };
 
   getBreadcrumbs();
