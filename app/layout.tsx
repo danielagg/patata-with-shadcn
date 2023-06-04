@@ -19,9 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="bg-background min-h-screen">{children}</div>
-        </ThemeProvider>
+        <div className="bg-background min-h-screen">{children}</div>
       </body>
     </html>
   );

@@ -6,9 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function Login() {
   const router = useRouter();
+  const { theme } = useTheme();
 
   return (
     <main className="min-h-screen flex justify-center items-center text-background">
@@ -85,6 +87,7 @@ export default function Login() {
         <Button
           size="lg"
           className="w-1/2 mt-6"
+          variant="default"
           onClick={() => router.push("/dashboard")}
         >
           Login

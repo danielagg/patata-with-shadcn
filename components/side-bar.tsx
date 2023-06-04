@@ -21,9 +21,15 @@ import { useTheme } from "next-themes";
 export function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
 
-  const HOME_PATH = "/";
+  const isDark = () => {
+    if (theme === "dark") return true;
+    if (theme == "system" && systemTheme == "dark") return true;
+    return false;
+  };
+
+  const HOME_PATH = "/dashboard";
   const PROFILE_PATH = "/profile";
   const NOTIFICATIONS_PATH = "/notifications";
   const ISSUES_PATH = "/issues";
@@ -57,7 +63,7 @@ export function Sidebar() {
       <div className="space-y-4 py-4">
         <div className="px-4 py-2">
           <div className="mt-4 mb-12 pl-2">
-            {theme == "dark" ? <Icons.koopleDark /> : <Icons.koopleLight />}
+            {isDark() ? <Icons.koopleDark /> : <Icons.koopleLight />}
           </div>
 
           <div className="space-y-1">
