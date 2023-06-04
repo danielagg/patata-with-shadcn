@@ -62,6 +62,7 @@ export const getColumns = (
       header: () => <div className="text-center w-[140px]">{env.name}</div>,
       cell: ({ row }) => {
         const envs: EntryPerEnvironmentState[] = row.getValue("environments");
+        const type: "feature-flag" | "remote-config" = row.getValue("type");
         const value = envs.filter((e) => e.name == env.name)[0].state;
 
         const getReleaseStateBackgroundColor = () => {
@@ -78,11 +79,15 @@ export const getColumns = (
         return (
           <div className="flex justify-center w-[140px]">
             <DropdownMenu>
-              <DropdownMenuTrigger>
-                <div
-                  className={`h-6 w-6 rounded-full cursor-pointer ${getReleaseStateBackgroundColor()}`}
-                />
-              </DropdownMenuTrigger>
+              {type === "feature-flag" ? (
+                <DropdownMenuTrigger>
+                  <div
+                    className={`h-6 w-6 rounded-full cursor-pointer ${getReleaseStateBackgroundColor()}`}
+                  />
+                </DropdownMenuTrigger>
+              ) : (
+                <Button variant="outline">View</Button>
+              )}
               <DropdownMenuContent>
                 <DropdownMenuItem
                   disabled={value === "disabled"}

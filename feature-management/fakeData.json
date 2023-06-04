@@ -17,23 +17,6 @@
     "createdOn": "2023-06-03T10:12:00"
   },
   {
-    "type": "remote-config",
-    "key": "main-list-lookup-perf-improvement",
-    "name": "Main List Performance",
-    "serverOnly": true,
-    "environments": [
-      { "key": "dev", "name": "Development", "state": "released" },
-      {
-        "key": "regression",
-        "name": "Regression Testing",
-        "state": "released"
-      },
-      { "key": "preprod", "name": "Pre-Production", "state": "released" },
-      { "key": "prod", "name": "Production", "state": "released" }
-    ],
-    "createdOn": "2023-06-01T10:12:00"
-  },
-  {
     "type": "feature-flag",
     "key": "new-design",
     "name": "Use new design",
@@ -49,6 +32,23 @@
       { "key": "prod", "name": "Production", "state": "soft-released" }
     ],
     "createdOn": "2023-06-02T10:12:00"
+  },
+  {
+    "type": "feature-flag",
+    "key": "github-sign-in",
+    "name": "Allow GitHub sign-in",
+    "serverOnly": true,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "disabled" },
+      { "key": "prod", "name": "Production", "state": "disabled" }
+    ],
+    "createdOn": "2023-06-04T08:12:00"
   },
   {
     "type": "remote-config",
@@ -69,23 +69,6 @@
   },
   {
     "type": "feature-flag",
-    "key": "github-sign-in",
-    "name": "Allow GitHub sign-in",
-    "serverOnly": true,
-    "environments": [
-      { "key": "dev", "name": "Development", "state": "released" },
-      {
-        "key": "regression",
-        "name": "Regression Testing",
-        "state": "released"
-      },
-      { "key": "preprod", "name": "Pre-Production", "state": "disabled" },
-      { "key": "prod", "name": "Production", "state": "disabled" }
-    ],
-    "createdOn": "2023-06-04T08:12:00"
-  },
-  {
-    "type": "feature-flag",
     "key": "save-profile-v2",
     "name": "Save profile V2",
     "serverOnly": true,
@@ -100,5 +83,22 @@
       { "key": "prod", "name": "Production", "state": "released" }
     ],
     "createdOn": "2023-05-11T10:12:00"
+  },
+  {
+    "type": "remote-config",
+    "key": "main-list-lookup-perf-improvement",
+    "name": "Main List Performance",
+    "serverOnly": true,
+    "environments": [
+      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "regression",
+        "name": "Regression Testing",
+        "state": "released"
+      },
+      { "key": "preprod", "name": "Pre-Production", "state": "released" },
+      { "key": "prod", "name": "Production", "state": "released" }
+    ],
+    "createdOn": "2023-06-01T10:12:00"
   }
 ]
