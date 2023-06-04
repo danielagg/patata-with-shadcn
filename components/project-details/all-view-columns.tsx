@@ -9,10 +9,28 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   EntryPerEnvironmentState,
@@ -117,7 +135,7 @@ export const getColumns = (
       enableHiding: false,
       header: () => <></>,
       cell: ({ row }) => {
-        const type: string = row.getValue("type");
+        const type: "feature-flag" | "remote-config" = row.getValue("type");
         return (
           <TooltipProvider>
             <Tooltip>
@@ -234,24 +252,53 @@ export const getColumns = (
     {
       id: "actions",
       enableHiding: false,
-      cell: () => {
+      cell: ({ row }) => {
+        const name: string = row.getValue("name");
+        const type: "feature-flag" | "remote-config" = row.getValue("type");
+
         return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>View Details</DropdownMenuItem>
-              <DropdownMenuItem>Code References</DropdownMenuItem>
-              <DropdownMenuItem>
-                <div className="text-red-700">Delete</div>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <AlertDialog>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem className="cursor-pointer">
+                  View Details
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  Code References
+                </DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer">
+                  <AlertDialogTrigger className="text-red-500 dark:text-red-600">
+                    Delete
+                  </AlertDialogTrigger>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete the{" "}
+                  {type == "feature-flag"
+                    ? "feature flag"
+                    : "remote configuration"}{" "}
+                  of '{name}'.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>
+                  <Button variant="destructive">Delete '{name}'</Button>
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         );
       },
     },

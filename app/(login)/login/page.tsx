@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
 
 export default function Login() {
   const router = useRouter();

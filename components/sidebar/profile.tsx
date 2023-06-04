@@ -11,6 +11,7 @@ export const ProfileSidebar = () => {
 
   const HOME_PATH = "/projects";
   const PROFILE_PATH = "/profile";
+  const BILLING_PATH = "/billing";
 
   return (
     <div className="space-y-1">
@@ -33,8 +34,8 @@ export const ProfileSidebar = () => {
         My Profile
       </Button>
       <Button
-        variant={getButtonVariant(PROFILE_PATH, pathname)}
-        onClick={() => router.push(PROFILE_PATH)}
+        variant={getButtonVariant(BILLING_PATH, pathname)}
+        onClick={() => router.push(BILLING_PATH)}
         size="sm"
         className="w-full justify-start"
       >

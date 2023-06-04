@@ -10,7 +10,7 @@ export default async function Projects({ params }: { params: { id: string } }) {
   const data = await getData(params.id);
 
   return (
-    <main className="min-h-screen container flex flex-col bg-background">
+    <main className="container flex flex-col bg-background">
       <h1 className="text-5xl font-bold mt-12">{data.name}</h1>
       {data.description ? (
         <h1 className="text-sm mt-2">{data.description}</h1>

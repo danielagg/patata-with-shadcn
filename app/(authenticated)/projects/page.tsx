@@ -10,9 +10,9 @@ export default async function Projects() {
   const data = await getData();
 
   return (
-    <main className="min-h-screen container flex flex-col bg-background">
-      <h1 className="text-5xl font-bold mt-12">Your Projects</h1>
-      <div className="mt-12 flex flex-wrap gap-6">
+    <main className="container flex flex-col bg-background">
+      <h1 className="text-5xl font-bold mt-12">My Projects</h1>
+      <div className="my-12 flex flex-wrap gap-6">
         {data.map((project) => {
           return <ProjectCard key={project.id} project={project} />;
         })}

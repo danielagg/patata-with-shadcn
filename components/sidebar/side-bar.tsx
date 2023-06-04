@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircle } from "lucide-react";
+import { Code, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Icons } from "../icons";
@@ -53,6 +53,15 @@ export function Sidebar({ projects }: { projects: Project[] }) {
         </div>
 
         <div className="px-4">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="w-full justify-start"
+            onClick={() => router.push("https://danielagg.com")}
+          >
+            <Code className="mr-2 h-4 w-4" />
+            SDKs
+          </Button>
           <Button
             variant="ghost"
             size="sm"

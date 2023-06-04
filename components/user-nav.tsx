@@ -23,7 +23,6 @@ export function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-9 w-9">
-            {/* <AvatarImage src="/avatars/02.png" alt="@dan" /> */}
             <AvatarFallback>DA</AvatarFallback>
           </Avatar>
         </Button>
@@ -48,7 +47,7 @@ export function UserNav() {
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() => router.push("/profile")}
+            onClick={() => router.push("/billing")}
           >
             <CreditCard className="mr-2 h-4 w-4" />
             <span>Billing</span>

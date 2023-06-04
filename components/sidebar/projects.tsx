@@ -1,6 +1,13 @@
 "use client";
 
-import { FolderGit2, ChevronsUpDown } from "lucide-react";
+import {
+  FolderGit2,
+  ChevronsUpDown,
+  Users2,
+  Settings,
+  Key,
+  Siren,
+} from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
@@ -26,7 +33,7 @@ export const ProjectsSidebar = ({ projects }: { projects: Project[] }) => {
         >
           <div className="flex items-center justify-between space-x-4">
             <h4 className="mb-2 text-lg font-semibold tracking-tight">
-              Your Projects
+              My Projects
             </h4>
             <CollapsibleTrigger asChild>
               <Button variant="ghost" size="sm" className="w-9 p-0">
@@ -58,15 +65,40 @@ const ProjectButton = ({ project }: { project: Project }) => {
   const router = useRouter();
   const pathname = usePathname();
 
+  const variant = getButtonVariant(`/projects/${project.id}`, pathname);
   return (
-    <Button
-      variant={getButtonVariant(`/projects/${project.id}`, pathname)}
-      size="sm"
-      className="w-full justify-start"
-      onClick={() => router.push(`/projects/${project.id}`)}
-    >
-      <FolderGit2 className="mr-2 h-4 w-4" />
-      {project.name}
-    </Button>
+    <>
+      <Button
+        variant={variant}
+        size="sm"
+        className="w-full justify-start"
+        onClick={() => router.push(`/projects/${project.id}`)}
+      >
+        <FolderGit2 className="mr-2 h-4 w-4" />
+        {project.name}
+      </Button>
+      {variant === "default" ? (
+        <div className="pl-4 flex flex-col mt-2">
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            <Users2 className="h-4 w-4 mr-2" />
+            Users
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            <Settings className="h-4 w-4 mr-2" />
+            Settings
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            <Key className="h-4 w-4 mr-2" />
+            API Keys
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            <Siren className="h-4 w-4 mr-2" />
+            Audit Logs
+          </Button>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
