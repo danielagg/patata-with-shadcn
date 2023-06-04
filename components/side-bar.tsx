@@ -15,10 +15,13 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
+import { Icons } from "./icons";
+import { useTheme } from "next-themes";
 
 export function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   const HOME_PATH = "/";
   const PROFILE_PATH = "/profile";
@@ -54,7 +57,7 @@ export function Sidebar() {
       <div className="space-y-4 py-4">
         <div className="px-4 py-2">
           <div className="mt-4 mb-12 pl-2">
-            <h1 className="text-4xl font-bold">Issue Tracker App</h1>
+            {theme == "dark" ? <Icons.koopleDark /> : <Icons.koopleLight />}
           </div>
 
           <div className="space-y-1">
