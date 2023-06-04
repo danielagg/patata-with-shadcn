@@ -60,9 +60,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       </div>
 
       <CardFooter>
-        <Button className="w-full">
-          <Link href={`/projects/${project.id}`}>Go to Project</Link>
-        </Button>
+        <Link href={`/projects/${project.id}`} className="w-full">
+          <Button className="w-full">Go to Project</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
