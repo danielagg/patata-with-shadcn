@@ -27,6 +27,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Billing() {
   return (
@@ -48,7 +57,25 @@ export default function Billing() {
             </ul>
           </CardContent>
           <CardFooter className="space-x-2">
-            <Button>Switch Plan</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>Switch Plan</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Change Plan</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you're
+                    done.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4"></div>
+                <DialogFooter>
+                  <Button type="submit">Change my Plan</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="destructive">Cancel Subscription</Button>

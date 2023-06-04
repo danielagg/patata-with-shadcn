@@ -26,12 +26,12 @@ export default function Login() {
       <div className="hidden lg:flex w-[57%] min-h-screen flex-col justify-center bg-foreground text-background p-24">
         <Icons.koopleDark />
         <h1 className="text-5xl font-bold mt-16">
-          Feature Flags, release quality software faster
+          Release quality software faster with Feature Flags
         </h1>
         <h2 className="text-lg mt-6">
-          The easiest, fastest and most confident way to release your projects.
-          Enable functionalities on & off during runtime, without deploying new
-          code.
+          The easiest, fastest and most convenient way to release your projects
+          with confidence. Toggle functionalities on and off during runtime,
+          without deploying new code.
         </h2>
       </div>
       <div className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center">
@@ -49,7 +49,7 @@ export default function Login() {
 
           <p className="text-sm mt-6">Password</p>
           <Input
-            placeholder="Type your address here"
+            placeholder="Type your password here"
             type="password"
             className="w-full mt-1"
           />
