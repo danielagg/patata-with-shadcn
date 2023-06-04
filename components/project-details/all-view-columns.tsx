@@ -19,6 +19,8 @@ import {
   FeatureManagementEntry,
 } from "@/feature-management/types";
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import { useState } from "react";
 
 export const getColumns = (
   environments: EntryPerEnvironmentState[]
@@ -46,6 +48,7 @@ export const getColumns = (
   >((env) => {
     return {
       accessorKey: "environments",
+      enableHiding: false,
       header: () => <div className="text-center w-[140px]">{env.name}</div>,
       cell: ({ row }) => {
         const envs: EntryPerEnvironmentState[] = row.getValue("environments");
@@ -111,6 +114,7 @@ export const getColumns = (
   return [
     {
       accessorKey: "type",
+      enableHiding: false,
       header: () => <></>,
       cell: ({ row }) => {
         const type: string = row.getValue("type");
@@ -139,7 +143,16 @@ export const getColumns = (
       },
     },
     {
+      accessorKey: "key",
+      header: "Key",
+      enableHiding: false,
+      cell: () => {
+        <></>;
+      },
+    },
+    {
       accessorKey: "name",
+      enableHiding: false,
       header: ({ column }) => {
         return (
           <Button
@@ -154,19 +167,45 @@ export const getColumns = (
           </Button>
         );
       },
-      cell: (test) => {
-        const name: string = test.row.getValue("name");
+      cell: ({ row }) => {
+        const name: string = row.getValue("name");
+        const key: any = row.getValue("key");
+        const [copied, setCopied] = useState(false);
 
-        console.log(test.row.original);
-
-        // const key: string = row.getValue("key");
         return (
           <div className="font-medium min-w-[300px] flex items-center space-x-4">
             <div>
               <div>{name}</div>
-              {/* <div className="text-xs text-muted-foreground">{key}</div> */}
+              <div
+                className={`text-xs text-muted-foreground ${
+                  copied ? "" : "cursor-pointer hover:underline"
+                }`}
+                onClick={() => {
+                  navigator.clipboard.writeText(key);
+                  setCopied(true);
+                  setTimeout(() => {
+                    setCopied(false);
+                  }, 2000);
+                }}
+              >
+                {copied ? `'${key}' has been copied to your clipboard` : key}
+              </div>
             </div>
           </div>
+        );
+      },
+    },
+    {
+      accessorKey: "serverOnly",
+      header: "Server Only",
+      cell: ({ row }) => {
+        const isServerOnly: boolean = row.getValue("serverOnly");
+        return isServerOnly ? (
+          <div className="w-[110px]">
+            <Badge variant="outline">Server-Only</Badge>
+          </div>
+        ) : (
+          <></>
         );
       },
     },
@@ -189,11 +228,12 @@ export const getColumns = (
       },
       cell: ({ row }) => {
         const createdOn: string = row.getValue("createdOn");
-        return <div>{formatRelativeTime(createdOn)}</div>;
+        return <div className="w-[150px]">{formatRelativeTime(createdOn)}</div>;
       },
     },
     {
       id: "actions",
+      enableHiding: false,
       cell: () => {
         return (
           <DropdownMenu>
@@ -207,9 +247,7 @@ export const getColumns = (
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem>View Details</DropdownMenuItem>
               <DropdownMenuItem>Code References</DropdownMenuItem>
-              <DropdownMenuItem
-              // onClick={() => navigator.clipboard.writeText(payment.id)}
-              >
+              <DropdownMenuItem>
                 <div className="text-red-700">Delete</div>
               </DropdownMenuItem>
             </DropdownMenuContent>

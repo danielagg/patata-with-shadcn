@@ -39,7 +39,12 @@ export function AllViewTable<TData, TValue>({
   data,
 }: AllViewProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    serverOnly: false,
+    createdOn: false,
+    key: false,
+  });
+
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
