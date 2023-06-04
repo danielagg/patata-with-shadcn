@@ -10,11 +10,21 @@ import { useTheme } from "next-themes";
 
 export default function Login() {
   const router = useRouter();
-  const { theme } = useTheme();
+
+  const ForgotPassword = () => {
+    return (
+      <div className="flex items-center space-x-2">
+        <HelpCircle className="h-4 w-4" />
+        <p className="text-primary text-sm hover:underline cursor-pointer">
+          Forgot your password?
+        </p>
+      </div>
+    );
+  };
 
   return (
     <main className="min-h-screen flex justify-center items-center">
-      <div className="w-[57%] min-h-screen flex flex-col justify-center bg-foreground text-background p-24">
+      <div className="hidden lg:flex w-[57%] min-h-screen flex-col justify-center bg-foreground text-background p-24">
         <Icons.koopleDark />
         <h1 className="text-5xl font-bold mt-16">
           Feature Flags, release quality software faster
@@ -25,11 +35,11 @@ export default function Login() {
           code.
         </h2>
       </div>
-      <div className="w-[43%] min-h-screen flex flex-col items-center justify-center">
+      <div className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-4xl">Welcome back!</h1>
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
-        <div className="flex space-x-2 mt-8">
+        <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 mt-8">
           <Button variant="outline" size="lg">
             <Icons.google />
             <p className="ml-2">Login with Google</p>
@@ -40,14 +50,14 @@ export default function Login() {
           </Button>
         </div>
 
-        <div className="relative w-[40%] flex items-center justify-center mt-16">
+        <div className="relative w-[40%] flex items-center justify-center mt-12 lg:mt-16">
           <hr className="z-0 absolute inset-0 w-full border border-border" />
           <p className="z-10 -mt-6 text-sm text-muted-foreground bg-background p-4">
             or
           </p>
         </div>
 
-        <div className="w-1/2 mt-10">
+        <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10">
           <p className="text-sm">Email</p>
           <Input
             placeholder="Type your email address here"
@@ -64,7 +74,7 @@ export default function Login() {
           />
         </div>
 
-        <div className="mt-6 w-1/2 flex items-center justify-between">
+        <div className="mt-6 w-[90%] lg:w-1/2 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Checkbox id="rememberMe" />
             <div className="grid gap-1.5 leading-none">
@@ -77,21 +87,22 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <HelpCircle className="h-4 w-4" />
-            <p className="text-primary text-sm hover:underline cursor-pointer">
-              Forgot your password?
-            </p>
+          <div className="hidden lg:block">
+            <ForgotPassword />
           </div>
         </div>
         <Button
           size="lg"
-          className="w-1/2 mt-6"
+          className="w-[90%] lg:w-1/2 mt-6"
           variant="default"
           onClick={() => router.push("/dashboard")}
         >
           Login
         </Button>
+
+        <div className="block lg:hidden mt-6">
+          <ForgotPassword />
+        </div>
         <p className="mt-8 text-sm text-muted-foreground">
           Don't have an account, yet?{" "}
           <span className="font-bold cursor-pointer text-primary">
