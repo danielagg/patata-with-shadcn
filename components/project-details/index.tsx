@@ -13,7 +13,7 @@ export default async function ProjectDetails() {
   const overview = await getOverviewData();
 
   return (
-    <Tabs defaultValue="all" className="mt-6">
+    <Tabs defaultValue="feature-flags" className="mt-6">
       <TabsList>
         <TabsTrigger className="px-10" value="all">
           All
