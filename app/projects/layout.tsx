@@ -1,18 +1,26 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
-import { Sidebar } from "@/components/side-bar";
+import { Sidebar } from "@/components/sidebar/side-bar";
+import { Project } from "@/projects/types";
+import data from "@/projects/fakeData.json";
 
-export default function DashboardLayout({
+async function getData(): Promise<Project[]> {
+  return data as Project[];
+}
+
+export default async function ProjectsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const data = await getData();
+
   return (
     <>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <div className="relative flex min-h-screen">
           <div className="w-1/5">
-            <Sidebar />
+            <Sidebar projects={data} />
           </div>
           <div className="w-4/5 flex flex-col">
             <SiteHeader />

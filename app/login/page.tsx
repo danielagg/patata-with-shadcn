@@ -40,11 +40,19 @@ export default function Login() {
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
         <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 mt-8">
-          <Button variant="outline" size="lg">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => router.push("/projects")}
+          >
             <Icons.google />
             <p className="ml-2">Login with Google</p>
           </Button>
-          <Button variant="outline" size="lg">
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => router.push("/projects")}
+          >
             <Icons.gitHub />
             <p className="ml-2">Login with GitHub</p>
           </Button>
@@ -95,7 +103,7 @@ export default function Login() {
           size="lg"
           className="w-[90%] lg:w-1/2 mt-6"
           variant="default"
-          onClick={() => router.push("/dashboard")}
+          onClick={() => router.push("/projects")}
         >
           Login
         </Button>
@@ -105,14 +113,11 @@ export default function Login() {
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
           Don't have an account, yet?{" "}
-          <span className="font-bold cursor-pointer text-primary">
+          <span className="font-bold cursor-pointer text-primary hover:underline">
             Register here!
           </span>
         </p>
       </div>
     </main>
-    // <main className="min-h-screen flex justify-center items-center text-background">
-
-    // </main>
   );
 }

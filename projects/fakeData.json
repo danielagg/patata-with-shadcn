@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Some very important project",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit earum veniam quos expedita.",
+    "environments": [
+      { "name": "Development", "color": "green" },
+      { "name": "Regression Testing", "color": "yellow" },
+      { "name": "Pre-Production", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "A second professional project",
+    "description": "Saepe quasi commodi velit sapiente, soluta voluptas iure amet voluptatibus unde quaerat magnam temporibus ad magni debitis nam.",
+    "environments": [
+      { "name": "Development", "color": "green" },
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #1",
+    "environments": [
+      { "name": "Development", "color": "green" },
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #2",
+    "description": "Vero sequi reiciendis dolorem quae minima velit iusto",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #3",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #4",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #5",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #6",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #7",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #8",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #9",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  },
+  {
+    "name": "Personal Project #10",
+    "environments": [
+      { "name": "Staging", "color": "blue" },
+      { "name": "Production", "color": "red" }
+    ]
+  }
+]

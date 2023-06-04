@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, UserCircle, Bell } from "lucide-react";
+import { LogOut, UserCircle, CreditCard } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -49,10 +48,10 @@ export function UserNav() {
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() => router.push("/notifications")}
+            onClick={() => router.push("/profile")}
           >
-            <Bell className="mr-2 h-4 w-4" />
-            <span>Notifications</span>
+            <CreditCard className="mr-2 h-4 w-4" />
+            <span>Billing</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
