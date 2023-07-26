@@ -1,7 +1,7 @@
 [
   {
     "id": "17ebb4e7-f339-4287-b6fb-81563b9a2baa",
-    "name": "Some very important project",
+    "name": "A very important project",
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit earum veniam quos expedita.",
     "environments": [
       { "name": "Development", "color": "green" },
@@ -12,7 +12,7 @@
   },
   {
     "id": "d4306cd9-6c9d-4182-acd8-7b79e4ba3295",
-    "name": "A second professional project",
+    "name": "The 2nd project",
     "description": "Saepe quasi commodi velit sapiente, soluta voluptas iure amet voluptatibus unde quaerat magnam temporibus ad magni debitis nam.",
     "environments": [
       { "name": "Development", "color": "green" },
@@ -22,9 +22,9 @@
   },
   {
     "id": "b050999a-c04e-4c67-863b-f993e6b86212",
-    "name": "Personal Project #1",
+    "name": "Personal Project",
+    "description": "Ut euismod placerat massa, eu condimentum quam rhoncus et.",
     "environments": [
-      { "name": "Development", "color": "green" },
       { "name": "Staging", "color": "blue" },
       { "name": "Production", "color": "red" }
     ]
@@ -33,70 +33,6 @@
     "id": "4f2e0e01-a94f-4bcc-897a-a21a95b8c47e",
     "name": "Personal Project #2",
     "description": "Vero sequi reiciendis dolorem quae minima velit iusto",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "e427ab65-a6c3-4f07-aac0-3f16c344c28b",
-    "name": "Personal Project #3",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "9fd55059-67a0-4add-84ca-35e3e1ecef0e",
-    "name": "Personal Project #4",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "069b4d7d-5430-455f-8268-aaba9426f0f8",
-    "name": "Personal Project #5",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "90424a20-e402-4831-b5f6-0f2c3e111e7d",
-    "name": "Personal Project #6",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "b9f3d1c5-bc19-4d5c-a6d8-44714c4353e9",
-    "name": "Personal Project #7",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "76f040d2-6f30-446c-93bd-190ffbbcfbd5",
-    "name": "Personal Project #8",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "1b6c1bcb-9cec-4296-b614-dcf52a91baaf",
-    "name": "Personal Project #9",
-    "environments": [
-      { "name": "Staging", "color": "blue" },
-      { "name": "Production", "color": "red" }
-    ]
-  },
-  {
-    "id": "854ff922-ca98-48cb-b33f-fb90fff782c7",
-    "name": "Personal Project #10",
     "environments": [
       { "name": "Staging", "color": "blue" },
       { "name": "Production", "color": "red" }
