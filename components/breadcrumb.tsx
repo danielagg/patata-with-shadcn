@@ -16,9 +16,9 @@ export function Breadcrumb() {
 
   return (
     <div className="flex gap-2 text-xs">
-      <Link className="cursor-pointer hover:underline" href="/projects">
+      {/* <Link className="cursor-pointer hover:underline" href="/projects">
         Home
-      </Link>
+      </Link> */}
       {/* <ChevronRight className="h-4 w-4" /> */}
       {/* <div className="cursor-pointer hover:underline">Issues</div> */}
     </div>
