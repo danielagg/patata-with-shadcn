@@ -87,11 +87,6 @@ export function AllViewTable<TData, TValue>({
         <div>
           <DropdownMenu>
             <div className="space-x-2">
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="ml-auto">
-                  Columns
-                </Button>
-              </DropdownMenuTrigger>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button className="px-8">Create new</Button>
