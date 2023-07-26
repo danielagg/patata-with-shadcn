@@ -263,10 +263,10 @@ export const getColumns = (
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem disabled className="cursor-pointer">
                   View Details
                 </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem disabled className="cursor-pointer">
                   Code References
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
