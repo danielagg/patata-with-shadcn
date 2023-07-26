@@ -59,7 +59,7 @@ export default function Billing() {
           <CardFooter className="space-x-2">
             <Dialog>
               <DialogTrigger asChild>
-                <Button>Switch Plan</Button>
+                <Button disabled>Switch Plan</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

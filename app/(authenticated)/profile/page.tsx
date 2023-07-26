@@ -29,7 +29,7 @@ export default function Profile() {
         </Avatar>
         <div>
           <h1 className="text-2xl font-bold">Daniel Agg</h1>
-          <p className="text-muted-foreground">daniel.agg@apiumhub.com</p>
+          <p className="text-muted-foreground">daniel.agg@outlook.com</p>
           <Badge variant="outline" className="mt-2">
             Administrator
           </Badge>
@@ -48,7 +48,7 @@ export default function Profile() {
             <div className="w-1/2 pr-3">
               <p className="text-sm">Email</p>
               <Input
-                value="daniel.agg@apiumhub.com"
+                value="daniel.agg@outlook.com"
                 type="email"
                 className="w-full mt-1"
                 disabled
