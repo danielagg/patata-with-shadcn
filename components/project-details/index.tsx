@@ -1,17 +1,15 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FeatureManagementEntry } from "@/feature-management/types";
 import data from "@/feature-management/fakeData.json";
 import { AllViewTable } from "./all-view";
 import { getColumns } from "./all-view-columns";
 import { AllViewContainer } from "./all-view-container";
+import { FeatureManagementPerProject } from "@/feature-management/types";
 
-async function getOverviewData(): Promise<FeatureManagementEntry[]> {
-  return data as FeatureManagementEntry[];
-}
-
-export default async function ProjectDetails() {
-  const overview = await getOverviewData();
-
+export default async function ProjectDetails({
+  data,
+}: {
+  data: FeatureManagementPerProject;
+}) {
   return (
     <Tabs defaultValue="feature-flags" className="mt-6">
       <TabsList>
@@ -26,7 +24,7 @@ export default async function ProjectDetails() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="all">
-        <AllViewContainer data={overview} />
+        <AllViewContainer data={data.fea} />
       </TabsContent>
       <TabsContent value="feature-flags">
         <AllViewContainer

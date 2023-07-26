@@ -16,11 +16,17 @@ import {
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { Project } from "@/projects/types";
 import { usePathname, useRouter } from "next/navigation";
 import { getButtonVariant } from "./side-bar";
 
-export const ProjectsSidebar = ({ projects }: { projects: Project[] }) => {
+export const ProjectsSidebar = ({
+  data,
+}: {
+  data: {
+    project: { key: string; name: string };
+    organization: { key: string; name: string };
+  }[];
+}) => {
   const [showAllProjects, setShowAllProjects] = useState(false);
 
   return (
@@ -45,13 +51,23 @@ export const ProjectsSidebar = ({ projects }: { projects: Project[] }) => {
 
           <ScrollArea className="max-h-[235px] overflow-y-auto  ">
             <>
-              {projects.slice(0, 3).map((project) => {
-                return <ProjectButton key={project.id} project={project} />;
+              {data.slice(0, 3).map((x) => {
+                return (
+                  <ProjectButton
+                    key={x.organization.key + "-" + x.project.key}
+                    data={x}
+                  />
+                );
               })}
             </>
             <CollapsibleContent className="space-y-2">
-              {projects.slice(3, projects.length).map((project) => {
-                return <ProjectButton key={project.id} project={project} />;
+              {data.slice(3, data.length).map((x) => {
+                return (
+                  <ProjectButton
+                    key={x.organization.key + "-" + x.project.key}
+                    data={x}
+                  />
+                );
               })}
             </CollapsibleContent>
           </ScrollArea>
@@ -61,21 +77,35 @@ export const ProjectsSidebar = ({ projects }: { projects: Project[] }) => {
   );
 };
 
-const ProjectButton = ({ project }: { project: Project }) => {
+const ProjectButton = ({
+  data,
+}: {
+  data: {
+    project: { key: string; name: string };
+    organization: { key: string; name: string };
+  };
+}) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const variant = getButtonVariant(`/projects/${project.id}`, pathname);
+  const variant = getButtonVariant(`/projects/${data.project}`, pathname);
   return (
     <>
       <Button
         variant={variant}
         size="sm"
-        className="w-full justify-start"
-        onClick={() => router.push(`/projects/${project.id}`)}
+        className="w-full items-start justify-start h-12 pt-2"
+        onClick={() =>
+          router.push(`/projects/${data.organization.key}/${data.project.key}`)
+        }
       >
-        <FolderGit2 className="mr-2 h-4 w-4" />
-        {project.name}
+        <FolderGit2 className="mr-2 mt-1 h-4 w-4" />
+        <div className="flex flex-col justify-start text-left">
+          <div>{data.project.name}</div>
+          <div className="text-xs text-muted-foreground">
+            {data.organization.name}
+          </div>
+        </div>
       </Button>
       {variant === "default" ? (
         <div className="pl-4 flex flex-col mt-2">

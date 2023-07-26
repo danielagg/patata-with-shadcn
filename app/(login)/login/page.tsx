@@ -1,14 +1,25 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HelpCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { makeHttpPost } from "@/lib/utils";
 
 export default function Login() {
-  const router = useRouter();
+  async function login(formData: FormData) {
+    "use server";
+
+    // jbTCmDyxv7vgM2Jpqhue
+    const response = await makeHttpPost<{ value: string }>("/auth/sign-in", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
+
+    cookies().set("bearer", response.value);
+    redirect("/projects");
+  }
 
   const ForgotPassword = () => {
     return (
@@ -34,13 +45,17 @@ export default function Login() {
           without deploying new code.
         </h2>
       </div>
-      <div className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center">
+      <form
+        action={login}
+        className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center"
+      >
         <h1 className="text-4xl font-bold">Welcome back!</h1>
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
         <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10">
           <p className="text-sm">Email</p>
           <Input
+            name="email"
             placeholder="Type your email address here"
             type="email"
             className="w-full mt-1"
@@ -49,6 +64,7 @@ export default function Login() {
 
           <p className="text-sm mt-6">Password</p>
           <Input
+            name="password"
             placeholder="Type your password here"
             type="password"
             className="w-full mt-1"
@@ -74,9 +90,9 @@ export default function Login() {
         </div>
         <Button
           size="lg"
+          type="submit"
           className="w-[90%] lg:w-1/2 mt-6"
           variant="default"
-          onClick={() => router.push("/projects")}
         >
           Login
         </Button>
@@ -93,19 +109,11 @@ export default function Login() {
         </div>
 
         <div className="flex flex-col lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 mt-8">
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => router.push("/projects")}
-          >
+          <Button disabled variant="outline" size="lg">
             <Icons.google />
             <p className="ml-2">Login with Google</p>
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => router.push("/projects")}
-          >
+          <Button disabled variant="outline" size="lg">
             <Icons.gitHub />
             <p className="ml-2">Login with GitHub</p>
           </Button>
@@ -117,7 +125,7 @@ export default function Login() {
             Register here!
           </span>
         </p>
-      </div>
+      </form>
     </main>
   );
 }

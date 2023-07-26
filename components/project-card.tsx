@@ -7,33 +7,56 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
-import { Project } from "@/projects/types";
 import Link from "next/link";
 
-export const ProjectCard = ({ project }: { project: Project }) => {
+export const ProjectCard = ({
+  data,
+}: {
+  data: {
+    project: {
+      key: string;
+      name: string;
+      desc: string;
+      environments: {
+        id: string;
+        key: string;
+        name: string;
+        createdAt: number;
+        color: string;
+      }[];
+    };
+    organization: {
+      key: string;
+      name: string;
+    };
+  };
+}) => {
   const Environment = ({
     name,
     color,
   }: {
     name: string;
-    color: "blue" | "yellow" | "green" | "red";
+    color: string; //"blue" | "yellow" | "green" | "red";
   }) => {
-    const getColor = () => {
-      switch (color) {
-        case "blue":
-          return "bg-blue-600";
-        case "yellow":
-          return "bg-yellow-600";
-        case "green":
-          return "bg-green-600";
-        case "red":
-          return "bg-red-600";
-      }
-    };
+    // const getColor = () => {
+    //   switch (color) {
+    //     case "blue":
+    //       return "bg-blue-600";
+    //     case "yellow":
+    //       return "bg-yellow-600";
+    //     case "green":
+    //       return "bg-green-600";
+    //     case "red":
+    //       return "bg-red-600";
+    //   }
+    // };
 
     return (
       <li className="flex items-center space-x-2 text-sm text-muted-foreground">
-        <div className={`h-2 w-2 rounded-full ${getColor()}`} />
+        <div
+          className={`h-2 w-2 rounded-full`}
+          style={{ backgroundColor: color }}
+        />
         <div>{name}</div>
       </li>
     );
@@ -42,9 +65,9 @@ export const ProjectCard = ({ project }: { project: Project }) => {
     <Card className="w-[350px] flex flex-col justify-between">
       <div>
         <CardHeader>
-          <CardTitle>{project.name}</CardTitle>
-          {project.description ? (
-            <CardDescription>{project.description}</CardDescription>
+          <CardTitle>{data.project.name}</CardTitle>
+          {data.project.desc != null ? (
+            <CardDescription>{data.project.desc}</CardDescription>
           ) : (
             <></>
           )}
@@ -52,7 +75,7 @@ export const ProjectCard = ({ project }: { project: Project }) => {
         <CardContent>
           <p>Environments</p>
           <ul>
-            {project.environments.map((e) => {
+            {data.project.environments?.map((e) => {
               return <Environment key={e.name} name={e.name} color={e.color} />;
             })}
           </ul>
@@ -60,7 +83,10 @@ export const ProjectCard = ({ project }: { project: Project }) => {
       </div>
 
       <CardFooter>
-        <Link href={`/projects/${project.id}`} className="w-full">
+        <Link
+          href={`/projects/${data.organization.key}/${data.project.key}`}
+          className="w-full"
+        >
           <Button className="w-full">Go to Project</Button>
         </Link>
       </CardFooter>

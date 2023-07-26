@@ -1,14 +1,22 @@
-export type EntryPerEnvironmentState = {
-  key: string;
-  name: string;
-  state: "released" | "soft-released" | "disabled";
+export type FeatureFlagsPerProject = {
+  pipeline: { order: number; key: string; name: string }[];
+  releaseToggles: {
+    createdAt: number;
+    key: string;
+    name: string;
+    serverOnly: boolean;
+    configurations: {
+      environmentKey: string;
+      targeting:
+        | "ENABLED_FOR_ALL"
+        | "ENABLED_FOR_SOME_USERS"
+        | "DISABLED_FOR_ALL";
+    }[];
+  }[];
 };
 
-export type FeatureManagementEntry = {
-  type: "feature-flag" | "remote-config";
+export type Enviroment = {
   key: string;
   name: string;
-  serverOnly: boolean;
-  environments: EntryPerEnvironmentState[];
-  createdOn: string;
+  color: string;
 };

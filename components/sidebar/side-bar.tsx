@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Icons } from "../icons";
 import { useTheme } from "next-themes";
-import { Project } from "@/projects/types";
+import { Project_Mock } from "@/projects/types";
 import { isDark } from "@/lib/utils";
 import { AdminSidebar } from "./admin";
 import { ProjectsSidebar } from "./projects";
@@ -31,7 +31,14 @@ export const getButtonVariant = (
   return currentPath.indexOf(expectedPath) > -1 ? "default" : "ghost";
 };
 
-export function Sidebar({ projects }: { projects: Project[] }) {
+export function Sidebar({
+  data,
+}: {
+  data: {
+    project: { key: string; name: string };
+    organization: { key: string; name: string };
+  }[];
+}) {
   const router = useRouter();
   const { theme, systemTheme } = useTheme();
 
@@ -48,7 +55,7 @@ export function Sidebar({ projects }: { projects: Project[] }) {
           </div>
 
           <ProfileSidebar />
-          <ProjectsSidebar projects={projects} />
+          <ProjectsSidebar data={data} />
           <AdminSidebar />
         </div>
 
