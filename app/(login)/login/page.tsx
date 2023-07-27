@@ -6,9 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Login() {
   const router = useRouter();
+
+  useEffect(() => {
+    const _ = setTimeout(() => {
+      router.push("/projects");
+    }, 4000); // 4 sec
+  }, []);
 
   const ForgotPassword = () => {
     return (
