@@ -1,16 +1,15 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeatureManagementEntry } from "@/feature-management/types";
 import data from "@/feature-management/fakeData.json";
-import { AllViewTable } from "./all-view";
-import { getColumns } from "./all-view-columns";
 import { AllViewContainer } from "./all-view-container";
+import { useEffect, useState } from "react";
 
 async function getOverviewData(): Promise<FeatureManagementEntry[]> {
   return data as FeatureManagementEntry[];
 }
 
 export default async function ProjectDetails() {
-  const overview = await getOverviewData();
+  const overViewData = await getOverviewData();
 
   return (
     <Tabs defaultValue="feature-flags" className="mt-6">
@@ -26,16 +25,16 @@ export default async function ProjectDetails() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="all">
-        <AllViewContainer data={overview} />
+        <AllViewContainer data={overViewData} />
       </TabsContent>
       <TabsContent value="feature-flags">
         <AllViewContainer
-          data={overview.filter((x) => x.type === "feature-flag")}
+          data={overViewData.filter((x) => x.type === "feature-flag")}
         />
       </TabsContent>
       <TabsContent value="remote-configs">
         <AllViewContainer
-          data={overview.filter((x) => x.type === "remote-config")}
+          data={overViewData.filter((x) => x.type === "remote-config")}
         />
       </TabsContent>
     </Tabs>

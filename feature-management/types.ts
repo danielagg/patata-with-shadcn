@@ -1,7 +1,8 @@
+export type FeatureFlagState = "released" | "soft-released" | "disabled";
 export type EntryPerEnvironmentState = {
   key: string;
   name: string;
-  state: "released" | "soft-released" | "disabled";
+  state: FeatureFlagState;
 };
 
 export type FeatureManagementEntry = {

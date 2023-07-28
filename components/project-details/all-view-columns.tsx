@@ -26,6 +26,7 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import {
   EntryPerEnvironmentState,
+  FeatureFlagState,
   FeatureManagementEntry,
 } from "@/feature-management/types";
 import { Button } from "../ui/button";
@@ -33,7 +34,8 @@ import { Badge } from "../ui/badge";
 import { useState } from "react";
 
 export const getColumns = (
-  environments: EntryPerEnvironmentState[]
+  data: FeatureManagementEntry[],
+  setData: any
 ): ColumnDef<FeatureManagementEntry>[] => {
   const formatRelativeTime = (dateString: string) => {
     const currentDate = new Date();
@@ -53,7 +55,7 @@ export const getColumns = (
     }
   };
 
-  const columnsPerEnvironments = environments.map<
+  const columnsPerEnvironments = data[0].environments.map<
     ColumnDef<FeatureManagementEntry>
   >((env) => {
     return {
@@ -76,6 +78,21 @@ export const getColumns = (
           }
         };
 
+        const changeStatus = (newStatus: FeatureFlagState) => {
+          setData((prevEntries: FeatureManagementEntry[]) =>
+            prevEntries.map((entry) =>
+              entry.key === row.getValue("key")
+                ? {
+                    ...entry,
+                    environments: entry.environments.map((x) =>
+                      x.key === env.key ? { ...x, state: newStatus } : x
+                    ),
+                  }
+                : entry
+            )
+          );
+        };
+
         return (
           <div className="flex justify-center w-[140px]">
             <DropdownMenu>
@@ -92,18 +109,21 @@ export const getColumns = (
                 <DropdownMenuItem
                   disabled={value === "disabled"}
                   className="cursor-pointer"
+                  onClick={() => changeStatus("disabled")}
                 >
                   Disable
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   disabled={value === "soft-released"}
                   className="cursor-pointer"
+                  onClick={() => changeStatus("soft-released")}
                 >
                   Soft-Release
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   disabled={value === "released"}
                   className="cursor-pointer"
+                  onClick={() => changeStatus("released")}
                 >
                   Release
                 </DropdownMenuItem>
