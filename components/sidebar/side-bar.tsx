@@ -23,12 +23,7 @@ export const getButtonVariant = (
   | "ghost"
   | null
   | undefined => {
-  // exact match on home, else it's a fuzzy match
-  if (expectedPath == "/projects") {
-    return currentPath == "/projects" ? "default" : "ghost";
-  }
-
-  return currentPath.indexOf(expectedPath) > -1 ? "default" : "ghost";
+  return currentPath === expectedPath ? "default" : "ghost";
 };
 
 export function Sidebar({ projects }: { projects: Project[] }) {

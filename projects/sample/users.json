@@ -1,0 +1,43 @@
+{
+  "statistics": [
+    {
+      "name": "Jan",
+      "total": 250
+    },
+    {
+      "name": "Feb",
+      "total": 270
+    },
+    {
+      "name": "Mar",
+      "total": 300
+    },
+    {
+      "name": "Apr",
+      "total": 290
+    },
+    {
+      "name": "May",
+      "total": 410
+    },
+    {
+      "name": "Jun",
+      "total": 390
+    },
+    {
+      "name": "Jul",
+      "total": 400
+    },
+    {
+      "name": "Aug",
+      "total": 375
+    }
+  ],
+  "users": [
+    {
+      "identity": "d0b774a3-e3c9-4c50-8f81-f8c92bac251f",
+      "name": "John Doe",
+      "email": "john.doe@company.com"
+    }
+  ]
+}

@@ -65,11 +65,15 @@ const ProjectButton = ({ project }: { project: Project }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const variant = getButtonVariant(`/projects/${project.id}`, pathname);
+  // user is currently visiting at least the root (might be on subsequent/child) route of the current project
+  const isUserIdlingOnCurrentProject = pathname.startsWith(
+    `/projects/${project.id}`
+  );
+
   return (
     <>
       <Button
-        variant={variant}
+        variant={getButtonVariant(`/projects/${project.id}`, pathname)}
         size="sm"
         className="w-full justify-start"
         onClick={() => router.push(`/projects/${project.id}`)}
@@ -77,9 +81,16 @@ const ProjectButton = ({ project }: { project: Project }) => {
         <FolderGit2 className="mr-2 h-4 w-4" />
         {project.name}
       </Button>
-      {variant === "default" ? (
+      {isUserIdlingOnCurrentProject ? (
         <div className="pl-4 flex flex-col mt-2">
-          <Button variant="ghost" className="w-full justify-start text-sm">
+          <Button
+            variant={getButtonVariant(
+              `/projects/${project.id}/users`,
+              pathname
+            )}
+            className="w-full justify-start text-sm"
+            onClick={() => router.push(`/projects/${project.id}/users`)}
+          >
             <Users2 className="h-4 w-4 mr-2" />
             Users
           </Button>
