@@ -9,7 +9,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -25,13 +24,15 @@ import {
 } from "@/components/ui/alert-dialog";
 import { ColumnDef } from "@tanstack/react-table";
 import {
-  EntryPerEnvironmentState,
-  FeatureFlagState,
+  FeatureFlagEntry,
   FeatureManagementEntry,
+  RemoteConfigEntry,
 } from "@/feature-management/types";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Dispatch, SetStateAction, useState } from "react";
+import { FeatureFlagActions } from "./feature-flag-actions";
+import { RemoteConfigActions } from "./remote-config-actions";
 
 export const getColumns = (
   data: FeatureManagementEntry[],
@@ -63,83 +64,22 @@ export const getColumns = (
       enableHiding: false,
       header: () => <div className="text-center w-[140px]">{env.name}</div>,
       cell: ({ row }) => {
-        const envs: EntryPerEnvironmentState[] = row.getValue("environments");
         const type: "feature-flag" | "remote-config" = row.getValue("type");
-        const value = envs.filter((e) => e.name == env.name)[0].state;
-
-        const getReleaseStateBackgroundColor = () => {
-          switch (value) {
-            case "released":
-              return "bg-emerald-400 dark:bg-emerald-600";
-            case "soft-released":
-              return "bg-yellow-400 dark:bg-yellow-600";
-            case "disabled":
-              return "bg-red-400 dark:bg-red-600";
-          }
-        };
-
-        const changeStatus = (newStatus: FeatureFlagState) => {
-          setData((prevEntries: FeatureManagementEntry[]) =>
-            prevEntries.map((entry) =>
-              entry.key === row.getValue("key")
-                ? {
-                    ...entry,
-                    environments: entry.environments.map((x) =>
-                      x.key === env.key ? { ...x, state: newStatus } : x
-                    ),
-                  }
-                : entry
-            )
-          );
-        };
 
         return (
           <div className="flex justify-center w-[140px]">
-            <DropdownMenu>
-              {type === "feature-flag" ? (
-                <DropdownMenuTrigger>
-                  <div
-                    className={`h-6 w-6 rounded-full cursor-pointer ${getReleaseStateBackgroundColor()}`}
-                  />
-                </DropdownMenuTrigger>
-              ) : (
-                <Button variant="outline">View</Button>
-              )}
-              <DropdownMenuContent>
-                <DropdownMenuItem
-                  disabled={value === "disabled"}
-                  className="cursor-pointer"
-                  onClick={() => changeStatus("disabled")}
-                >
-                  Disable
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  disabled={value === "soft-released"}
-                  className="cursor-pointer"
-                  onClick={() => changeStatus("soft-released")}
-                >
-                  Soft-Release
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  disabled={value === "released"}
-                  className="cursor-pointer"
-                  onClick={() => changeStatus("released")}
-                >
-                  Release
-                </DropdownMenuItem>
-
-                {value === "soft-released" ? (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                      Edit Soft-Release Audience
-                    </DropdownMenuItem>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {type === "feature-flag" ? (
+              <FeatureFlagActions
+                row={row}
+                setData={setData}
+                currentEnvironment={env as FeatureFlagEntry}
+              />
+            ) : (
+              <RemoteConfigActions
+                row={row}
+                currentEnvironment={env as RemoteConfigEntry}
+              />
+            )}
           </div>
         );
       },

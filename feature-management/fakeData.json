@@ -56,14 +56,26 @@
     "name": "Admins",
     "serverOnly": false,
     "environments": [
-      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "dev",
+        "name": "Development",
+        "remoteConfigValue": "['user1@company.com', 'user2@company.com']"
+      },
       {
         "key": "regression",
         "name": "Regression Testing",
-        "state": "released"
+        "remoteConfigValue": "['user1@company.com', 'user2@company.com', 'user3@company.com']"
       },
-      { "key": "preprod", "name": "Pre-Production", "state": "released" },
-      { "key": "prod", "name": "Production", "state": "soft-released" }
+      {
+        "key": "preprod",
+        "name": "Pre-Production",
+        "remoteConfigValue": "['user1@company.com']"
+      },
+      {
+        "key": "prod",
+        "name": "Production",
+        "remoteConfigValue": "['user1@company.com', 'user2@company.com', 'user3@company.com', 'user4@company.com']"
+      }
     ],
     "createdOn": "2023-06-01T10:12:00"
   },
@@ -90,14 +102,26 @@
     "name": "Main List Performance",
     "serverOnly": true,
     "environments": [
-      { "key": "dev", "name": "Development", "state": "released" },
+      {
+        "key": "dev",
+        "name": "Development",
+        "remoteConfigValue": "myvalue1;myvalue2;myvalue3"
+      },
       {
         "key": "regression",
         "name": "Regression Testing",
-        "state": "released"
+        "remoteConfigValue": "myvalue1"
       },
-      { "key": "preprod", "name": "Pre-Production", "state": "released" },
-      { "key": "prod", "name": "Production", "state": "released" }
+      {
+        "key": "preprod",
+        "name": "Pre-Production",
+        "remoteConfigValue": "myvalue1;myvalue2;myvalue3;myvalue4"
+      },
+      {
+        "key": "prod",
+        "name": "Production",
+        "remoteConfigValue": "myvalue1;myvalue2"
+      }
     ],
     "createdOn": "2023-06-01T10:12:00"
   }
