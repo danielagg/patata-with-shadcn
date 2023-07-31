@@ -13,7 +13,7 @@ export default function Login() {
 
   useEffect(() => {
     const _ = setTimeout(() => {
-      router.push("/projects");
+      router.push("/projects/17ebb4e7-f339-4287-b6fb-81563b9a2baa");
     }, 4000); // 4 sec
   }, []);
 
