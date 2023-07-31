@@ -16,6 +16,7 @@ export const AllViewContainer = ({
     <AllViewTable
       columns={getColumns(mutableData, setMutableData)}
       data={mutableData}
+      setData={setMutableData}
     />
   );
 };

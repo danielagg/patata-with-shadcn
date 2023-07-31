@@ -24,19 +24,22 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Input } from "../ui/input";
 import { CreateNewEntry } from "./create-new-entry";
+import { FeatureManagementEntry } from "@/feature-management/types";
 
-interface AllViewProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface AllViewProps<TValue> {
+  columns: ColumnDef<FeatureManagementEntry, TValue>[];
+  data: FeatureManagementEntry[];
+  setData: Dispatch<SetStateAction<FeatureManagementEntry[]>>;
 }
 
-export function AllViewTable<TData, TValue>({
+export function AllViewTable<TValue>({
   columns,
   data,
-}: AllViewProps<TData, TValue>) {
+  setData,
+}: AllViewProps<TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     serverOnly: false,
@@ -75,7 +78,7 @@ export function AllViewTable<TData, TValue>({
         <div>
           <DropdownMenu>
             <div className="space-x-2">
-              <CreateNewEntry />
+              <CreateNewEntry setData={setData} />
             </div>
             <DropdownMenuContent align="end">
               {table
@@ -96,7 +99,7 @@ export function AllViewTable<TData, TValue>({
                   );
                 })}
             </DropdownMenuContent>
-          </DropdownMenu>{" "}
+          </DropdownMenu>
         </div>
       </div>
 

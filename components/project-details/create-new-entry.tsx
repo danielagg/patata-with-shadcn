@@ -13,12 +13,43 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useState } from "react";
+import { FeatureManagementEntry } from "@/feature-management/types";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export const CreateNewEntry = () => {
+export const CreateNewEntry = ({
+  setData,
+}: {
+  setData: Dispatch<SetStateAction<FeatureManagementEntry[]>>;
+}) => {
   const [newEntryType, setNewEntryType] = useState<
     "feature-flag" | "remote-config"
   >("feature-flag");
+
+  const [key, setKey] = useState<string>("");
+  const [name, setName] = useState<string>("");
+
+  const onSave = () => {
+    setData((prevEntries: FeatureManagementEntry[]) => [
+      createNewEntry(prevEntries[0]),
+      ...prevEntries,
+    ]);
+  };
+
+  const createNewEntry = (
+    sample: FeatureManagementEntry
+  ): FeatureManagementEntry => {
+    return {
+      type: newEntryType,
+      key,
+      name,
+      serverOnly: false,
+      environments: sample.environments.map((env) => {
+        return { ...env, state: "disabled" };
+      }),
+      createdOn: new Date().toISOString(),
+    };
+  };
 
   return (
     <Dialog>
@@ -60,7 +91,8 @@ export const CreateNewEntry = () => {
                   ? "Feature Flag"
                   : "Remote Configuration"
               }`}
-              id="ff"
+              value={name}
+              onChange={(newValue) => setName(newValue.target.value)}
             />
           </div>
 
@@ -73,12 +105,17 @@ export const CreateNewEntry = () => {
                   ? "Feature Flag"
                   : "Remote Configuration"
               }`}
-              id="ff"
+              value={key}
+              onChange={(newValue) => setKey(newValue.target.value)}
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Save new entry</Button>
+          <DialogClose asChild>
+            <Button type="submit" onClick={() => onSave()}>
+              Save new entry
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -31,11 +31,11 @@ import {
 } from "@/feature-management/types";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 export const getColumns = (
   data: FeatureManagementEntry[],
-  setData: any
+  setData: Dispatch<SetStateAction<FeatureManagementEntry[]>>
 ): ColumnDef<FeatureManagementEntry>[] => {
   const formatRelativeTime = (dateString: string) => {
     const currentDate = new Date();
