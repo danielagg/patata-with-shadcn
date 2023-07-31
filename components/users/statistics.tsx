@@ -25,7 +25,7 @@ export const UserStatistics = ({
         <CardTitle>Usage per month</CardTitle>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={350}>
+        <ResponsiveContainer width="100%" height={320}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="1 1" verticalPoints={[65]} />
             <XAxis
@@ -35,13 +35,7 @@ export const UserStatistics = ({
               tickLine={false}
               axisLine={false}
             />
-            <YAxis
-              stroke="#888888"
-              fontSize={12}
-              tickLine={false}
-              axisLine={false}
-              tickFormatter={(value) => `${value} users`}
-            />
+            <YAxis stroke="#888888" fontSize={12} axisLine={false} />
             <Bar dataKey="total" fill="#94a3b8" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>

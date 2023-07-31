@@ -31,6 +31,7 @@ export const UserCountDelta = ({
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">
+          {getExactDifferenceInUsageSinceLastMonth() > 0 ? "+" : "-"}
           {getUsageChangeSinceLastMonth()}
         </div>
         <p className="text-xs text-muted-foreground">
