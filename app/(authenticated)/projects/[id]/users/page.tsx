@@ -4,6 +4,7 @@ import { UserStatistics } from "@/components/users/statistics";
 import { UserCountDelta } from "@/components/users/user-count-delta";
 import { NewUniqueUsers } from "@/components/users/new-unique-users";
 import { RetentionRate } from "@/components/users/retention-rate";
+import { UsersTable } from "@/components/users/table";
 
 async function getData(): Promise<UsersOfProjectAggregate> {
   return await Promise.resolve(data);
@@ -23,6 +24,10 @@ export default async function UsersOfProjects() {
           <NewUniqueUsers count={16} delta={0.056} />
           <RetentionRate rate={0.32} />
         </div>
+      </div>
+      <div className="my-12">
+        <h2 className="font-bold text-xl">User Identities</h2>
+        <UsersTable data={data.users} />
       </div>
     </main>
   );
