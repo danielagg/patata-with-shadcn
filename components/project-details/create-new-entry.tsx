@@ -13,7 +13,11 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { FeatureManagementEntry } from "@/feature-management/types";
+import {
+  FeatureFlagEntry,
+  FeatureManagementEntry,
+  RemoteConfigEntry,
+} from "@/feature-management/types";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Dispatch, SetStateAction, useState } from "react";
 
@@ -30,25 +34,49 @@ export const CreateNewEntry = ({
   const [name, setName] = useState<string>("");
 
   const onSave = () => {
-    setData((prevEntries: FeatureManagementEntry[]) => [
-      createNewEntry(prevEntries[0]),
-      ...prevEntries,
-    ]);
+    if (newEntryType == "feature-flag") {
+      setData((prevEntries: FeatureManagementEntry[]) => [
+        createNewEntry(prevEntries.filter((x) => x.type === "feature-flag")[0]),
+        ...prevEntries,
+      ]);
+    } else {
+      setData((prevEntries: FeatureManagementEntry[]) => [
+        createNewEntry(
+          prevEntries.filter((x) => x.type === "remote-config")[0]
+        ),
+        ...prevEntries,
+      ]);
+    }
   };
 
   const createNewEntry = (
     sample: FeatureManagementEntry
   ): FeatureManagementEntry => {
+    const generateDefaultEnvironmentValuesForFeatureFlag =
+      (): FeatureFlagEntry[] => {
+        return (sample.environments as FeatureFlagEntry[]).map((env) => {
+          return { ...env, state: "disabled" };
+        });
+      };
+
+    const generateDefaultEnvironmentValuesForRemoteConfig =
+      (): RemoteConfigEntry[] => {
+        return (sample.environments as RemoteConfigEntry[]).map((env) => {
+          return { ...env, remoteConfigValue: "" };
+        });
+      };
+
     return {
       type: newEntryType,
       key,
       name,
       serverOnly: false,
-      environments: sample.environments.map((env) => {
-        return { ...env, state: "disabled" };
-      }),
+      environments:
+        newEntryType == "feature-flag"
+          ? generateDefaultEnvironmentValuesForFeatureFlag()
+          : generateDefaultEnvironmentValuesForRemoteConfig(),
       createdOn: new Date().toISOString(),
-    };
+    } as any; // todo
   };
 
   return (
