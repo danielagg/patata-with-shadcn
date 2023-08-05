@@ -36,17 +36,20 @@ export const CreateNewEntry = ({
   const onSave = () => {
     if (newEntryType == "feature-flag") {
       setData((prevEntries: FeatureManagementEntry[]) => [
-        createNewEntry(prevEntries.filter((x) => x.type === "feature-flag")[0]),
+        createNewEntry(prevEntries[0]),
         ...prevEntries,
       ]);
     } else {
       setData((prevEntries: FeatureManagementEntry[]) => [
-        createNewEntry(
-          prevEntries.filter((x) => x.type === "remote-config")[0]
-        ),
+        createNewEntry(prevEntries[0]),
         ...prevEntries,
       ]);
     }
+
+    // reset state after save
+    setKey("");
+    setName("");
+    setNewEntryType("feature-flag");
   };
 
   const createNewEntry = (
@@ -140,7 +143,11 @@ export const CreateNewEntry = ({
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="submit" onClick={() => onSave()}>
+            <Button
+              type="submit"
+              disabled={!key || !name}
+              onClick={() => onSave()}
+            >
               Save new entry
             </Button>
           </DialogClose>
