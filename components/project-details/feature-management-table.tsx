@@ -35,7 +35,7 @@ interface AllViewProps<TValue> {
   setData: Dispatch<SetStateAction<FeatureManagementEntry[]>>;
 }
 
-export function AllViewTable<TValue>({
+export function FeatureManagementTable<TValue>({
   columns,
   data,
   setData,

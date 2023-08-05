@@ -1,11 +1,11 @@
 "use client";
 
 import { FeatureManagementEntry } from "@/feature-management/types";
-import { AllViewTable } from "./all-view";
-import { getColumns } from "./all-view-columns";
+import { FeatureManagementTable } from "./feature-management-table";
+import { getColumns } from "./feature-management-columns";
 import { useState } from "react";
 
-export const AllViewContainer = ({
+export const FeatureManagementContainer = ({
   data,
 }: {
   data: FeatureManagementEntry[];
@@ -13,7 +13,7 @@ export const AllViewContainer = ({
   const [mutableData, setMutableData] = useState(data);
 
   return (
-    <AllViewTable
+    <FeatureManagementTable
       columns={getColumns(mutableData, setMutableData)}
       data={mutableData}
       setData={setMutableData}
