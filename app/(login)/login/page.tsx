@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { HelpCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { Label } from "@/components/ui/label";
 
 export default function Login() {
   const router = useRouter();
@@ -67,16 +68,17 @@ export default function Login() {
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
         <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10">
-          <p className="text-sm">Email</p>
+          <Label htmlFor="email">Email</Label>
           <Input
+            id="email"
             placeholder="Type your email address here"
             type="email"
             className="w-full mt-1"
             autoFocus
           />
-
-          <p className="text-sm mt-6">Password</p>
+          <Label htmlFor="password">Password</Label>
           <Input
+            id="password"
             placeholder="Type your password here"
             type="password"
             className="w-full mt-1"

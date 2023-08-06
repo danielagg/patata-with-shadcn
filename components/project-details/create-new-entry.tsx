@@ -113,8 +113,9 @@ export const CreateNewEntry = ({
           </RadioGroup>
 
           <div className="mt-4">
-            <Label htmlFor="ff">Name</Label>
+            <Label htmlFor="name">Name</Label>
             <Input
+              id="name"
               autoFocus
               className="mt-1"
               placeholder={`The name of the ${
@@ -128,8 +129,9 @@ export const CreateNewEntry = ({
           </div>
 
           <div>
-            <Label htmlFor="ff">Key</Label>
+            <Label htmlFor="key">Key</Label>
             <Input
+              id="key"
               className="mt-1"
               placeholder={`The key of the ${
                 newEntryType === "feature-flag"

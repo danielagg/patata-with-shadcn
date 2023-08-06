@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 export default function Profile() {
   return (
@@ -45,8 +46,10 @@ export default function Profile() {
           </CardHeader>
           <CardContent className="w-full flex flex-wrap gap-y-6">
             <div className="w-1/2 pr-3">
-              <p className="text-sm">Email</p>
+              <p className="text-sm"></p>
+              <Label htmlFor="email">Email</Label>
               <Input
+                id="email"
                 value="daniel.agg@outlook.com"
                 type="email"
                 className="w-full mt-1"
@@ -54,12 +57,12 @@ export default function Profile() {
               />
             </div>
             <div className="w-1/2 pl-3">
-              <p className="text-sm">Language</p>
+              <Label htmlFor="language">Language</Label>
               <Select defaultValue="en">
                 <SelectTrigger className="w-full mt-1">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent id="language">
                   <SelectGroup>
                     <SelectItem value="en">English</SelectItem>
                     <SelectItem value="es">Spanish</SelectItem>
@@ -69,8 +72,9 @@ export default function Profile() {
               </Select>
             </div>
             <div className="w-1/2 pr-3">
-              <p className="text-sm">Password</p>
+              <Label htmlFor="password">Password</Label>
               <Input
+                id="password"
                 value="loremipsum12345"
                 type="password"
                 className="w-full mt-1"
