@@ -94,7 +94,14 @@ const ProjectButton = ({ project }: { project: Project }) => {
             <Users2 className="h-4 w-4 mr-2" />
             Users
           </Button>
-          <Button variant="ghost" className="w-full justify-start text-sm">
+          <Button
+            variant={getButtonVariant(
+              `/projects/${project.id}/settings`,
+              pathname
+            )}
+            className="w-full justify-start text-sm"
+            onClick={() => router.push(`/projects/${project.id}/settings`)}
+          >
             <Settings className="h-4 w-4 mr-2" />
             Settings
           </Button>

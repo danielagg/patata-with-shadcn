@@ -20,3 +20,9 @@ export type UsersOfProjectAggregate = {
   statistics: UsersOfProjectStatistic[];
   users: UsersOfProject[];
 };
+
+export type ProjectSettings = {
+  name: string;
+  description: string;
+  environments: { key: string; name: string }[];
+};

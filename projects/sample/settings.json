@@ -1,0 +1,10 @@
+{
+  "name": "My sample project - 1",
+  "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit earum veniam quos expedita.",
+  "environments": [
+    { "key": "dev", "name": "Development" },
+    { "key": "regression", "name": "Regression Testing" },
+    { "key": "pre-prod", "name": "Pre-Production" },
+    { "key": "prod", "name": "Production" }
+  ]
+}
