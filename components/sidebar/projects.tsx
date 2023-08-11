@@ -105,7 +105,14 @@ const ProjectButton = ({ project }: { project: Project }) => {
             <Settings className="h-4 w-4 mr-2" />
             Settings
           </Button>
-          <Button variant="ghost" className="w-full justify-start text-sm">
+          <Button
+            variant={getButtonVariant(
+              `/projects/${project.id}/api-keys`,
+              pathname
+            )}
+            onClick={() => router.push(`/projects/${project.id}/api-keys`)}
+            className="w-full justify-start text-sm"
+          >
             <Key className="h-4 w-4 mr-2" />
             API Keys
           </Button>
