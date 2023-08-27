@@ -43,7 +43,7 @@ export default function Login() {
         </h2>
       </div>
       <div className="w-[90%] lg:w-[43%] min-h-screen flex flex-col items-center justify-center relative">
-        <div className="absolute top-0 w-full bg-red-600 p-4 text-white flex items-center justify-center text-sm space-x-2">
+        <div className="absolute top-0 w-full bg-[#5AD5D3] p-4 flex items-center justify-center text-sm space-x-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -59,30 +59,34 @@ export default function Login() {
             />
           </svg>
 
-          <div>
+          <p>
             This is a demo application. Please feel free to press 'Login'
             without any email/password specified.
-          </div>
+          </p>
         </div>
-        <h1 className="text-4xl font-bold">Welcome back!</h1>
+        <h1 className="text-5xl font-bold">Welcome back!</h1>
         <p className="mt-1 opacity-70">Please sign in, to continue.</p>
 
-        <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            placeholder="Type your email address here"
-            type="email"
-            className="w-full mt-1"
-            autoFocus
-          />
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            placeholder="Type your password here"
-            type="password"
-            className="w-full mt-1"
-          />
+        <div className="w-[90%] lg:w-1/2 mt-6 lg:mt-10 space-y-4">
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              placeholder="Type your email address here"
+              type="email"
+              className="w-full mt-1"
+              autoFocus
+            />
+          </div>
+          <div>
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              placeholder="Type your password here"
+              type="password"
+              className="w-full mt-1"
+            />
+          </div>
         </div>
 
         <div className="mt-6 w-[90%] lg:w-1/2 flex items-center justify-between">
